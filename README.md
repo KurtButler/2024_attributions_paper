@@ -1,5 +1,5 @@
 # Explainable Learning with Gaussian Processes
-In this repo, we provide MATLAB code to reproduce the results from our paper "explainable learning with Gaussian processes".
+In this repo, we provide MATLAB code to reproduce the results from our paper [Explainable Learning with Gaussian Processes](https://arxiv.org/abs/2403.07072v1), which is currently available on the [arXiv](https://arxiv.org/abs/2403.07072v1).
 
 > **Abstract:** The field of explainable artificial intelligence (XAI) attempts to develop
 methods that provide insight into how complicated machine learning methods make
