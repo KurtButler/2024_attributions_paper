@@ -37,9 +37,12 @@ In our experiments, we used several publicly available data sets from the UCI Ma
 If you use any code or results from this project in your academic work, please cite our paper:
 ```
 @article{butler2024explainable,
-  title={Explainable Learning with Gaussian Processes},
-  author={Butler, Kurt and Feng, Guanchao and Djuri{\'c}, Petar M},
-  year={2024}
+      title={Explainable Learning with Gaussian Processes}, 
+      author={Kurt Butler and Guanchao Feng and Petar M. Djuric},
+      year={2024},
+      eprint={2403.07072},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
 }
 ```
 
