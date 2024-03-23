@@ -34,8 +34,9 @@ exp4_quadrature
 exp5_rfgps
 
 
-% Appendices
-% exp4b_converg
-% suppl_quadrature
+% Appendix plots
+
+% Quadrature rule figures
+suppl_quadrature
 
 

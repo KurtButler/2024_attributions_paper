@@ -140,4 +140,10 @@ stem(ell.^-1,'filled')
 title('Relative feature importance','FontSize',15);
 legend('ARD relevance weight, $\ell^{-1}$','FontSize',12,'Interpreter','latex','location','best');
 
+
+
+%% Save the figure
 saveas(gcf,'results/fig4_suppl.png')
+
+
+

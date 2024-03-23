@@ -193,7 +193,6 @@ Llist = unique(round(exp(linspace(0,log(100),50)))');
 
     xlabel('Number of function evaluations')
     ylabel('MSE(attr_i(x|F))')
-%     title('Mean-square error of the mean attribution','FontSize',15);
     legend('Right hand rule','Trapezoid rule',"Simpson's rule")
     xlim([0,30])
 
@@ -212,11 +211,3 @@ saveas(gcf,'results/quadrules_2.png')
 figure(10)
 gcf; ans.Position = [315 155 360 282];
 saveas(gcf,'results/quadrules_3.png')
-
-
-
-
-%% Extra plot for debugging
-figure(11)
-shapbarplot(Eattr,Vattr);
-title('Attributions for the exact GPR')

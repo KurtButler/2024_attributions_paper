@@ -1,12 +1,11 @@
-
-
+%% Random seed
+% We fix the random seed for reproducibility.
+rng(0)
 
 
 %% Config
 NoPts = 10; % No of points used to compute Lmin
 
-
-% rng(0)
 
 %% Main loop
 Ltable = zeros(3*2,NoPts);

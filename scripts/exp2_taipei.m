@@ -81,5 +81,5 @@ fprintf('Sum(attr): \t%0.2f\n',sum(Eattr))
 
 %% Sizing the figure for publication
 % (optional)
-% gcf; ans.Position = [31 653 560 420];
-% saveas(gcf,'results/fig2.png')
+% set(gcf,'Position',[31 653 560 420]);
+saveas(gcf,'results/fig2.png')

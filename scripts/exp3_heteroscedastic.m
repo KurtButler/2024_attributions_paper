@@ -114,6 +114,6 @@ xlim([linedist(1),linedist(end)])
 %% Sizing the figure for publication
 % (optional)
 % gcf; ans.Position = [200 200 750 462];
-% saveas(gcf,'results/fig3.png')
+saveas(gcf,'results/fig3.png')
 
 

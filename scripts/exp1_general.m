@@ -142,8 +142,8 @@ end
 xticklabels(ticklabels)
 sgtitle('','FontSize',14)
 
-
+%% Sizing the figure for publication
+% (optional)
 set(gcf,'Position',[400 712 408 536]);
-
 saveas(gcf,'./results/fig1a.png')
 
