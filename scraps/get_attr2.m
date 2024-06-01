@@ -1,4 +1,4 @@
-function [Eattr,Varattr] = get_attr(gp,Xt,xp,x0)
+function [Eattr,Varattr] = get_attr2(gp,Xt,xp,x0)
 % This function assumes SE or  ARD-SE kernel.
 %   v2 : Added precomputations for speed
 
@@ -32,8 +32,8 @@ Linv = diag(ell.^-1);
 Linv2 = diag(ell.^-2);
 Linv2timesDeltaX = Linv2*(xp-x0);
 a = (xp-x0)'*Linv2timesDeltaX;
-bb = (2*(x0'-Xt)*Linv2timesDeltaX)';
-cc = diag((x0'-Xt)*Linv2*(x0-Xt'))';
+bb = 2*(x0'-Xt)*Linv2timesDeltaX;
+cc = diag((x0'-Xt)*Linv2*(x0-Xt'));
 % s = sqrt(2)/norm(Linv*(xp-x0));
 
 % Loop over all the features to get the attributions
@@ -41,16 +41,15 @@ for i = 1:D
     if xp(i)-x0(i) ~= 0
         % Mean calculation
         d = -sf2*(xp(i)-x0(i))*(xp(i)-x0(i))/ell(i)^2;
-        ff = (-sf2*(xp(i)-x0(i))*(x0(i)-Xt(:,i))/ell(i)^2)';
-%         for n = 1:N
-%             xn = Xt(n,:)';
-%             %             b = 2*(x0-xn)'*Linv2timesDeltaX;
-%             %             c = (x0-xn)'*Linv2*(x0-xn);
-%             %             d = -sf2*(xp(i)-x0(i))*(xp(i)-x0(i))/ell(i)^2;
-%             %             f = -sf2*(xp(i)-x0(i))*(x0(i)-xn(i))/ell(i)^2;
-%             A(i,n) = (exp((-a - bb(n) - cc(n))/2)*(4*sqrt(a)*d*(-1 + exp((a + bb(n))/2)) + exp((2*a + bb(n))^2/(8*a))*(bb(n)*d - 2*a*ff(n))*sqrt(2*pi)*(erf(bb(n)/(2*sqrt(2)*sqrt(a))) - erf((2*a + bb(n))/(2*sqrt(2)*sqrt(a))))))/(4*a^(3/2)); 
-%         end
-        A(i,:) = (exp((-a - bb - cc)/2).*(4*sqrt(a)*d*(-1 + exp((a + bb)/2)) + exp((2*a + bb).^2/(8*a)).*(bb*d - 2*a*ff)*sqrt(2*pi).*(erf(bb/(2*sqrt(2)*sqrt(a))) - erf((2*a + bb)/(2*sqrt(2)*sqrt(a))))))/(4*a^(3/2));
+        ff = -sf2*(xp(i)-x0(i))*(x0(i)-Xt(:,i))/ell(i)^2;
+        for n = 1:N
+            xn = Xt(n,:)';
+            %             b = 2*(x0-xn)'*Linv2timesDeltaX;
+            %             c = (x0-xn)'*Linv2*(x0-xn);
+            %             d = -sf2*(xp(i)-x0(i))*(xp(i)-x0(i))/ell(i)^2;
+            %             f = -sf2*(xp(i)-x0(i))*(x0(i)-xn(i))/ell(i)^2;
+            A(i,n) = (exp((-a - bb(n) - cc(n))/2)*(4*sqrt(a)*d*(-1 + exp((a + bb(n))/2)) + exp((2*a + bb(n))^2/(8*a))*(bb(n)*d - 2*a*ff(n))*sqrt(2*pi)*(erf(bb(n)/(2*sqrt(2)*sqrt(a))) - erf((2*a + bb(n))/(2*sqrt(2)*sqrt(a))))))/(4*a^(3/2)); 
+        end
         % Variance calculation
         v = -(sf2*(xp(i)-x0(i))^2)/(ell(i)^4);
         w = sf2/(ell(i)^2);
